@@ -13,6 +13,7 @@ authors = [
   { name = "Matt McCormick", email = "matt@mmmccormick.com" },
 ]
 classifiers = [
+  "Framework :: Pytest",
   "Development Status :: 4 - Beta",
   "Programming Language :: Python",
   "Programming Language :: Python :: 3.7",
@@ -24,7 +25,9 @@ classifiers = [
   "Programming Language :: Python :: Implementation :: PyPy",
 ]
 dependencies = [
+  "pytest",
   "urllib3",
+  "py-cid",
 ]
 dynamic = ["version"]
 
@@ -33,12 +36,14 @@ Documentation = "https://github.com/thewtex/pytest-web3-data#readme"
 Issues = "https://github.com/thewtex/pytest-web3-data/issues"
 Source = "https://github.com/thewtex/pytest-web3-data"
 
+[project.entry-points.pytest11]
+web3-data = "pytest_web3_data" 
+
 [tool.hatch.version]
 path = "pytest_web3_data/__about__.py"
 
 [tool.hatch.envs.default]
 dependencies = [
-  "pytest",
   "pytest-cov",
 ]
 [tool.hatch.envs.default.scripts]
