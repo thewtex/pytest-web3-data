@@ -71,15 +71,19 @@ def web3_data(request):
         def dl_ipfs_file_local(file_name, sub_dir, root_cid, output_dir):
             file_path = sub_dir / file_name
             url = f"http://localhost:8080/ipfs/{root_cid}/{file_path}"
-            response = http.request('GET', url)
+            response = http.request('GET', url, preload_content=False)
             with open(output_dir / sub_dir / file_name, 'wb') as fp:
-                fp.write(response.data)
+                for chunk in response.stream():
+                    fp.write(chunk)
+            response.release_conn()
         def dl_ipfs_file_remote(file_name, sub_dir, root_cid, output_dir):
             file_path = sub_dir / file_name
             url = f"https://{root_cid}.ipfs.w3s.link/{file_path}"
-            response = http.request('GET', url)
+            response = http.request('GET', url, preload_content=False)
             with open(output_dir / sub_dir / file_name, 'wb') as fp:
-                fp.write(response.data)
+                for chunk in response.stream():
+                    fp.write(chunk)
+            response.release_conn()
 
         if have_local_ipfs_daemon:
             ls_ipfs_dir = ls_ipfs_dir_local
