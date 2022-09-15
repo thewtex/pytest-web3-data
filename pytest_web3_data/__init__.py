@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-from pathlib import PosixPath, Path
+from pathlib import PurePosixPath, Path
 import json
 import shutil
 
@@ -47,7 +47,8 @@ def web3_data(request):
     try:
         web3_data_dir.mkdir(exist_ok=True)
 
-        http = urllib3.PoolManager()
+        retries = urllib3.util.Retry(total=15, backoff_factor=0.1)
+        http = urllib3.PoolManager(retries=retries)
         def fetch_files(root_cid, output_dir, sub_dir):
             subdir_str = str(sub_dir)
             if subdir_str == '.':
@@ -71,7 +72,7 @@ def web3_data(request):
                       (output_dir / nested_dir).mkdir()
                       fetch_files(root_cid, output_dir, nested_dir)
 
-        fetch_files(cid, web3_data_dir, PosixPath(''))
+        fetch_files(cid, web3_data_dir, PurePosixPath(''))
     except Exception as err:
         shutil.rmtree(web3_data_dir)
         raise err
