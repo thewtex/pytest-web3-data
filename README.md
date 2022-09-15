@@ -89,6 +89,8 @@ web3_data_dir = test/data/bafybeigvfmtttajzj5no3jt2xavkdncxy3xapw3rndvoxmao72vhw
 
 To add new data, copy the current `web3_data` directory into a staging directory, e.g. `test/data/staging`, add new data, and use this staging directory path for `--web3-data-dir`. Upload to IPFS before committing to Git.
 
+For a robust and performant experience, we recommend running a local IPFS daemon, e.g. with [ipfs-deskop](https://docs.ipfs.tech/install/ipfs-desktop/).
+
 Enjoy! 😊
 
 ## License
