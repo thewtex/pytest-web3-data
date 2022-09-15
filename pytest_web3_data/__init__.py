@@ -54,7 +54,7 @@ def web3_data(request):
                 subdir_str = ''
 
             url = f"https://dweb.link/api/v0/ls?arg={root_cid}/{subdir_str}"
-            response = http.request('GET', url)
+            response = http.request('GET', url, retries=10)
             contents = json.loads(response.data.decode('utf-8'))
             for objects in contents['Objects']:
                 for link in objects['Links']:
@@ -63,7 +63,7 @@ def web3_data(request):
                       file_name = link['Name']
                       file_path = sub_dir / file_name
                       url = f"https://{root_cid}.ipfs.w3s.link/{file_path}"
-                      response = http.request('GET', url)
+                      response = http.request('GET', url, retries=10)
                       with open(output_dir / sub_dir / file_name, 'wb') as fp:
                           fp.write(response.data)
                   elif object_type == 1:
