@@ -2,6 +2,7 @@
 
 [![PyPI - Version](https://img.shields.io/pypi/v/pytest-web3-data.svg)](https://pypi.org/project/pytest-web3-data)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/pytest-web3-data.svg)](https://pypi.org/project/pytest-web3-data)
+[![test](https://github.com/thewtex/pytest-web3-data/actions/workflows/test.yml/badge.svg)](https://github.com/thewtex/pytest-web3-data/actions/workflows/test.yml)
 
 -----
 
