@@ -87,6 +87,8 @@ or in the `pytest.ini` file:
 web3_data_dir = test/data/bafybeigvfmtttajzj5no3jt2xavkdncxy3xapw3rndvoxmao72vhwy4osu
 ```
 
+To add new data, copy the current `web3_data` directory into a staging directory, e.g. `test/data/staging`, add new data, and use this staging directory path for `--web3-data-dir`. Upload to IPFS before committing to Git.
+
 Enjoy! 😊
 
 ## License
