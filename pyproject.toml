@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "pytest-web3-data"
-description = ''
+description = "A pytest plugin to fetch test data from IPFS HTTP gateways during pytest execution."
 readme = "README.md"
 requires-python = ">=3.7"
 license = "MIT"
